@@ -1,59 +1,165 @@
-const types = {
+const queryTypes = {
     name: {
         mask: /^[^"!#\$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~0-9]+$/,
         resources: [
             {
                 title: "Google",
-                href: (q) => `https://www.google.com/search?q="${q}"`
+                link: (q) => `https://www.google.com/search?q="${q}"`
             },
             {
-                title: "Example",
-                href: "https://example.com"
+                title: "Processos",
+                link: (q) => `https://www.jusbrasil.com.br/consulta-processual/busca?q=${q}`
+            },
+            {
+                title: "Portal da Transparência",
+                link: (q) => `https://portaldatransparencia.gov.br/busca?termo=${q}`
+            },
+            {
+                title: "Facebook",
+                link: (q) => `https://www.facebook.com/search/people/?q=${q}`
+            },
+            {
+                title: "Instagram",
+                link: (q) => `https://www.google.com/search?q=site:instagram.com "${q}"`
+            },
+            {
+                title: "X (Twitter)",
+                link: (q) => `https://twitter.com/search?q=${q}`
+            },
+            {
+                title: "LinkedIn",
+                link: (q) => `https://www.linkedin.com/search/results/all/?keywords=${q}`
+            },
+            {
+                title: "Domínios",
+                link: (q) => `https://www.whoxy.com/search.php?name=${q}`
+            },
+            {
+                title: "Vazamentos",
+                link: "https://snusbase.com/"
             }
         ]
     },
-    username: {mask: /^[\w.-]+$/},
-    email: {mask: /^[\w@.-]+$/},
-    phone: {mask: [{mask: "(00) 0000-0000"}, {mask: "(00) 00000-0000"}]},
-    cpf: {mask: "000.000.000-00"},
-    cnpj: {mask: "00.000.000/0000-00"},
+    username: {
+        mask: /^[\w.-]+$/,
+        resources: [
+            {
+                title: "Google",
+                link: (q) => `https://www.google.com/search?q="${q}"`
+            }
+        ]
+    },
+    email: {
+        mask: /^[\w@.-]+$/,
+        resources: [
+            {
+                title: "Google",
+                link: (q) => `https://www.google.com/search?q="${q}"`
+            }
+        ]
+    },
+    phone: {
+        mask: [
+            {mask: "(00) 0000-0000"},
+            {mask: "(00) 00000-0000"}
+        ],
+        resources: [
+            {
+                title: "Google",
+                link: (q) => `https://www.google.com/search?q="${q}"`
+            }
+        ]
+    },
+    cpf: {
+        mask: "000.000.000-00",
+        resources: [
+            {
+                title: "Google",
+                link: (q, m) => `https://www.google.com/search?q="${q}" | "${m}"`
+            }
+        ]
+    },
+    cnpj: {
+        mask: "00.000.000/0000-00",
+        resources: [
+            {
+                title: "Google",
+                link: (q, m) => `https://www.google.com/search?q="${q}" | "${m}"`
+            },
+            {
+                title: "CNPJ BIZ",
+                link: (q) => `https://cnpj.biz/${q}`
+            }
+        ]
+    },
     plate: {
         mask: "###-####",
         definitions: {"#": /[a-zA-Z0-9]/},
-        prepare: (str) => str.toUpperCase()
+        prepare: (str) => str.toUpperCase(),
+        resources: [
+            {
+                title: "Google",
+                link: (q, m) => `https://www.google.com/search?q="${q}" | "${m}"`
+            }
+        ]
     },
-    cep: {mask: "00000-000"},
-    ip: {mask: /^[\d:.]+$/}
+    cep: {
+        mask: "00000-000",
+        resources: [
+            {
+                title: "Google",
+                link: (q, m) => `https://www.google.com/search?q="${q}" | "${m}"`
+            }
+        ]
+    },
+    domain: {
+        mask: /^[\w.-]+$/,
+        resources: [
+            {
+                title: "Google",
+                link: (q) => `https://www.google.com/search?q=site:${q}`
+            }
+        ]
+    },
+    ip: {
+        mask: /^[\d:.]+$/,
+        resources: [
+            {
+                title: "Google",
+                link: (q) => `https://www.google.com/search?q="${q}"`
+            }
+        ]
+    }
 };
 
 const queryForm = document.querySelector("header form");
 const queryInput = document.querySelector("header form input");
 const querySelect = document.querySelector("header form select");
-const queryMask = IMask(queryInput, types[querySelect.value].mask);
+const queryMask = IMask(queryInput, queryTypes[querySelect.value].mask);
 const queryResults = document.querySelector("main");
 
 querySelect.addEventListener("change", () => {
     queryMask.value = "";
-    queryMask.updateOptions(types[querySelect.value]);
+    queryMask.updateOptions(queryTypes[querySelect.value]);
 });
 
 queryForm.addEventListener("submit", (event) => {
     event.preventDefault();
     queryResults.innerHTML = "";
-    types[querySelect.value].resources.forEach((resource) => {
-        const title = document.createElement("h5");
-        title.innerText = resource.title;
-        title.className = "mb-0";
-        const href = (resource.href instanceof Function) ? resource.href(queryInput.value) : resource.href;
-        const link = document.createElement("a");
-        link.href = href;
-        link.target = "_blank";
-        link.innerText = href;
-        link.className = "link-secondary stretched-link small";
+    queryTypes[querySelect.value].resources.forEach((resource) => {
+        const h5 = document.createElement("h5");
+        h5.innerHTML = resource.title;
+        h5.className = "mb-0";
+        const link = (resource.link instanceof Function) ? resource.link(queryMask.unmaskedValue, queryMask.value) : resource.link;
+        const a = document.createElement("a");
+        a.href = (new URL(link)).href;
+        a.target = "_blank";
+        a.innerText = link.replace(/^https?:\/\/(www\.)?/,"").replace(/\/$/, "").replaceAll(" ", "+");
+        a.className = "link-secondary stretched-link small";
         const div = document.createElement("div");
-        div.className = "my-3 position-relative";
-        div.appendChild(title);
-        div.appendChild(link);
+        div.className = "my-4 position-relative";
+        div.appendChild(h5);
+        div.appendChild(a);
         queryResults.appendChild(div);
     });
 });
