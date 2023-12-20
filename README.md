@@ -2,4 +2,4 @@
 
 Clearly organized OSINT resources.
 
-Currently, there is only support for Brazil. However, with help, there could be support for other countries as well.
+Brazil only. However, with help, there could be support for other countries as well.
