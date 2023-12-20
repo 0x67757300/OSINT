@@ -35,6 +35,10 @@ const queryTypes = {
                 link: (q) => `https://www.whoxy.com/search.php?name=${q}`
             },
             {
+                title: "Prováveis usuários",
+                link: () => "https://seintpl.github.io/NAMINT/"
+            },
+            {
                 title: "Vazamentos",
                 link: () => "https://snusbase.com/"
             }
@@ -72,8 +76,8 @@ const queryTypes = {
                 link: () => "https://whatsmyname.app/"
             },
             {
-                title: "Permutações",
-                link: () => "https://seintpl.github.io/NAMINT/"
+                title: "Darknet",
+                link: (q) => `https://ahmia.fi/search/?q=${q}`
             },
             {
                 title: "Vazamentos",
@@ -91,6 +95,14 @@ const queryTypes = {
             {
                 title: "Conta Google",
                 link: () => `https://github.com/mxrch/GHunt`
+            },
+            {
+                title: "Nome e Foto",
+                link: () => `https://avatarapi.com/`
+            },
+            {
+                title: "Reputação",
+                link: (q) => `https://emailrep.io/${q}`
             },
             {
                 title: "Vazamentos (HIBP)",
@@ -111,6 +123,10 @@ const queryTypes = {
             {
                 title: "Google",
                 link: (q, m) => `https://www.google.com/search?q="${m}" | "+55${q}" | "55${q}" | "${q}"`
+            },
+            {
+                title: "Operadora e Região",
+                link: (q) => `https://www.qualoperadora.net/?telefone=${q}`
             }
         ]
     },
@@ -120,6 +136,18 @@ const queryTypes = {
             {
                 title: "Google",
                 link: (q, m) => `https://www.google.com/search?q="${q}" | "${m}"`
+            },
+            {
+                title: "Situação Cadastral",
+                link: () => "https://servicos.receita.fazenda.gov.br/servicos/cpf/consultasituacao/consultapublica.asp"
+            },
+            {
+                title: "Situação Cadastral (Sem nascimento)",
+                link: () => "https://www.situacao-cadastral.com/"
+            },
+            {
+                title: "Processos",
+                link: (q) => `https://www.jusbrasil.com.br/consulta-processual/busca?q=${q}`
             }
         ]
     },
@@ -129,6 +157,10 @@ const queryTypes = {
             {
                 title: "Google",
                 link: (q, m) => `https://www.google.com/search?q="${q}" | "${m}"`
+            },
+            {
+                title: "Situação Cadastral",
+                link: () => "https://solucoes.receita.fazenda.gov.br/servicos/cnpjreva/Cnpjreva_Solicitacao.asp"
             },
             {
                 title: "CNPJ BIZ",
@@ -143,7 +175,7 @@ const queryTypes = {
         resources: [
             {
                 title: "Google",
-                link: (q, m) => `https://www.google.com/search?q="${q}" | "${m}"`
+                link: (q, m) => `https://www.google.com/search?q="${m}" | "${q}"`
             }
         ]
     },
@@ -152,7 +184,7 @@ const queryTypes = {
         resources: [
             {
                 title: "Google",
-                link: (q, m) => `https://www.google.com/search?q="${q}" | "${m}"`
+                link: (q, m) => `https://www.google.com/search?q="${m}" | "${q}"`
             },
         ]
     },
@@ -172,6 +204,10 @@ const queryTypes = {
                 link: (q) => `https://www.whoxy.com/${q}`
             },
             {
+                title: "Analytics",
+                link: (q) => `https://analyzeid.com/?domain=${q}`
+            },
+            {
                 title: "Web Archive",
                 link: (q) => `https://web.archive.org/web/*/${q}`
             },
@@ -184,13 +220,25 @@ const queryTypes = {
                 link: (q) => `https://host.io/${q}`
             },
             {
+                title: "Tecnologias",
+                link: (q) => `https://builtwith.com/${q}`
+            },
+            {
+                title: "Shodan",
+                link: (q) => `https://www.shodan.io/search?query=${q}`
+            },
+            {
+                title: "Rapid DNS",
+                link: (q) => `https://rapiddns.io/s/${q}`
+            },
+            {
                 title: "IP Reverso",
-                link: (q) => `https://viewdns.info/reverseip/?host=${q}`
+                link: () => "https://viewdns.info/reverseip/"
             },
             {
                 title: "Registros DNS",
                 link: () => "https://hackertarget.com/dns-lookup/"
-            },
+            }
         ]
     },
     ip: {
@@ -203,6 +251,10 @@ const queryTypes = {
             {
                 title: "Dados e Localização",
                 link: (q) => `https://ipinfo.io/${q}`
+            },
+            {
+                title: "Shodan",
+                link: (q) => `https://www.shodan.io/host/${q}`
             },
             {
                 title: "Pirataria",
