@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OSINT</title>
+    <link rel="icon" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <h1>OSINT</h1>
+    <form>
+        <div class="input-group border rounded">
+            <select name="type" class="btn ps-3 pe-1 border-0 rounded-0 bg-transparent text-muted text-start">
+                <option value="name">Nome</option>
+                <option value="username">Usuário</option>
+                <option value="email">Email</option>
+                <option value="phone">Telefone</option>
+                <option value="cpf">CPF</option>
+                <option value="cnpj">CNPJ</option>
+                <option value="plate">Placa</option>
+                <option value="cep">CEP</option>
+                <option value="ip">IP</option>
+            </select>
+            <input name="value" type="text" class="form-control border-0 rounded-0 bg-transparent" required spellcheck="off" autocomplete="off">
+            <button type="submit" class="btn ps-1 pe-3 border-0 rounded-0 bg-transparent text-muted"><i class="bi bi-search"></i></button>
+        </div>
+    </form>
+    <script src="assets/js/imask.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
