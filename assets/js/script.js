@@ -131,11 +131,13 @@ const queryTypes = {
         ]
     }
 };
-
 const queryForm = document.querySelector("header form");
 const queryInput = document.querySelector("header form input");
 const querySelect = document.querySelector("header form select");
 const queryMask = IMask(queryInput, queryTypes[querySelect.value].mask);
+const queryArgs = new URLSearchParams(location.search);
+const queryType = queryArgs.get("type");
+const queryValue = queryArgs.get("value");
 const queryResults = document.querySelector("main");
 
 querySelect.addEventListener("change", () => {
@@ -143,10 +145,11 @@ querySelect.addEventListener("change", () => {
     queryMask.updateOptions(queryTypes[querySelect.value]);
 });
 
-queryForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    queryResults.innerHTML = "";
-    queryTypes[querySelect.value].resources.forEach((resource) => {
+if (queryType && queryValue) {
+    querySelect.value = queryType;
+    queryMask.updateOptions(queryTypes[queryType]);
+    queryMask.value = queryValue;
+    queryTypes[queryType].resources.forEach((resource) => {
         const h5 = document.createElement("h5");
         h5.innerHTML = resource.title;
         h5.className = "mb-0";
@@ -162,4 +165,4 @@ queryForm.addEventListener("submit", (event) => {
         div.appendChild(a);
         queryResults.appendChild(div);
     });
-});
+}
