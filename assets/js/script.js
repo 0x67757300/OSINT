@@ -39,7 +39,11 @@ const queryTypes = {
                 link: () => "https://seintpl.github.io/NAMINT/"
             },
             {
-                title: "Vazamentos",
+                title: "Vazamentos (Zero Trust)",
+                link: () => "https://search.0t.rocks/"
+            },
+            {
+                title: "Vazamentos (Snusbase)",
                 link: () => "https://snusbase.com/"
             }
         ]
@@ -80,7 +84,11 @@ const queryTypes = {
                 link: (q) => `https://ahmia.fi/search/?q=${q}`
             },
             {
-                title: "Vazamentos",
+                title: "Vazamentos (Zero Trust)",
+                link: () => "https://search.0t.rocks/"
+            },
+            {
+                title: "Vazamentos (Snusbase)",
                 link: () => "https://snusbase.com/"
             }
         ]
@@ -109,6 +117,10 @@ const queryTypes = {
                 link: () => "https://haveibeenpwned.com/"
             },
             {
+                title: "Vazamentos (Zero Trust)",
+                link: () => "https://search.0t.rocks/"
+            },
+            {
                 title: "Vazamentos (Snusbase)",
                 link: () => "https://snusbase.com/"
             }
@@ -127,6 +139,10 @@ const queryTypes = {
             {
                 title: "Operadora e Região",
                 link: (q) => `https://www.qualoperadora.net/?telefone=${q}`
+            },
+            {
+                title: "Vazamentos",
+                link: () => "https://search.0t.rocks/"
             }
         ]
     },
@@ -176,6 +192,10 @@ const queryTypes = {
             {
                 title: "Google",
                 link: (q, m) => `https://www.google.com/search?q="${m}" | "${q}"`
+            },
+            {
+                title: "Olho no Carro",
+                link: () => "https://www.olhonocarro.com.br/"
             }
         ]
     },
@@ -186,6 +206,10 @@ const queryTypes = {
                 title: "Google",
                 link: (q, m) => `https://www.google.com/search?q="${m}" | "${q}"`
             },
+            {
+                title: "Vazamentos",
+                link: () => "https://search.0t.rocks/"
+            }
         ]
     },
     domain: {
@@ -238,6 +262,10 @@ const queryTypes = {
             {
                 title: "Registros DNS",
                 link: () => "https://hackertarget.com/dns-lookup/"
+            },
+            {
+                title: "Vazamentos",
+                link: () => "https://search.0t.rocks/"
             }
         ]
     },
@@ -261,7 +289,11 @@ const queryTypes = {
                 link: (q) => `https://iknowwhatyoudownload.com/en/peer/?ip=${q}`
             },
             {
-                title: "Vazamentos",
+                title: "Vazamentos (Zero Trust)",
+                link: () => "https://search.0t.rocks/"
+            },
+            {
+                title: "Vazamentos (Snusbase)",
                 link: () => "https://snusbase.com/"
             }
         ]
