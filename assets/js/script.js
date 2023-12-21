@@ -35,7 +35,7 @@ const queryTypes = {
                 link: (q) => `https://www.whoxy.com/search.php?name=${q}`
             },
             {
-                title: "Prováveis usuários",
+                title: "Prováveis Usuários",
                 link: () => "https://seintpl.github.io/NAMINT/"
             },
             {
@@ -158,7 +158,7 @@ const queryTypes = {
                 link: () => "https://servicos.receita.fazenda.gov.br/servicos/cpf/consultasituacao/consultapublica.asp"
             },
             {
-                title: "Situação Cadastral (Sem nascimento)",
+                title: "Situação Cadastral (Sem Nascimento)",
                 link: () => "https://www.situacao-cadastral.com/"
             },
             {
