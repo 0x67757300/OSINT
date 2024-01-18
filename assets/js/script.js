@@ -264,7 +264,7 @@ const queryMask = IMask(queryInput, queryTypes[querySelect.value].mask);
 const queryArgs = new URLSearchParams(location.search);
 const queryType = queryArgs.get("type");
 const queryValue = queryArgs.get("value");
-const queryResults = document.querySelector("main");
+const queryResults = document.querySelector("#content");
 
 querySelect.addEventListener("change", () => {
     queryMask.value = "";
@@ -272,6 +272,7 @@ querySelect.addEventListener("change", () => {
 });
 
 if (queryType && queryValue) {
+    queryResults.innerHTML = "<h3>Acesso Rápido</h3>";
     querySelect.value = queryType;
     queryMask.updateOptions(queryTypes[queryType]);
     queryMask.value = queryValue;

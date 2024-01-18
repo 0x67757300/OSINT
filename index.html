@@ -10,29 +10,53 @@
     <link rel="stylesheet" href="assets/css/fonts.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
-    <header>
-        <h1 class="user-select-none">OSINT</h1>
-        <form class="d-print-none">
-            <div class="input-group border rounded">
-                <select name="type" class="btn ps-3 pe-1 border-0 rounded-0 bg-transparent text-muted text-start">
-                    <option value="name">Nome</option>
-                    <option value="username">Usuário</option>
-                    <option value="email">Email</option>
-                    <option value="phone">Telefone</option>
-                    <option value="cpf">CPF</option>
-                    <option value="cnpj">CNPJ</option>
-                    <option value="plate">Placa</option>
-                    <option value="cep">CEP</option>
-                    <option value="domain">Domínio</option>
-                    <option value="ip">IP</option>
-                </select>
-                <input name="value" type="text" class="form-control border-0 rounded-0 bg-transparent" required spellcheck="false" autocomplete="false" autofocus>
-                <button type="submit" class="btn ps-1 pe-3 border-0 rounded-0 bg-transparent text-muted"><i class="bi bi-search"></i></button>
-            </div>
-        </form>
+<body class="d-flex flex-column min-vh-100">
+    <header class="mb-4 py-3 border-bottom">
+        <div class="container px-3 d-flex flex-wrap justify-content-center justify-content-sm-between align-items-center">
+            <h1 class="user-select-none mb-2 mb-sm-0"><a href="./" class="link-body-emphasis">OSINT</a></h1>
+            <form class="d-print-none col-12 col-sm-auto">
+                <div class="input-group border rounded">
+                    <select name="type" class="btn ps-3 pe-1 border-0 rounded-0 bg-transparent text-muted text-start">
+                        <option value="name">Nome</option>
+                        <option value="username">Usuário</option>
+                        <option value="email">E-mail</option>
+                        <option value="phone">Telefone</option>
+                        <option value="cpf">CPF</option>
+                        <option value="cnpj">CNPJ</option>
+                        <option value="plate">Placa</option>
+                        <option value="cep">CEP</option>
+                        <option value="domain">Domínio</option>
+                        <option value="ip">IP</option>
+                    </select>
+                    <input name="value" type="text" class="form-control border-0 rounded-0 bg-transparent" required spellcheck="false" autocomplete="off">
+                    <button type="submit" class="btn ps-1 pe-3 border-0 rounded-0 bg-transparent text-muted"><i class="bi bi-search"></i></button>
+                </div>
+            </form>
+        </div>
     </header>
-    <main></main>
+    <main class="mb-4">
+        <div id="content" class="container px-3">
+            <h3>Introdução</h3>
+            <p><b>O</b>pen-<b>S</b>ource <b>Int</b>elligence incorpora a coleta sistemática e análise de informações provenientes de fontes publicamente disponíveis para produzir inteligência acionável. Inerentemente sem custo, requerem apenas habilidades básicas em informática e a curiosidade intelectual dos analistas de OSINT.</p>
+            <h3>Mecanismos de Busca</h3>
+            <p>A habilidade primordial em uma investigação de fontes abertas é a proficiência na utilização de mecanismos de busca, dada sua capacidade de refinar consultas, cruzar dados e facilitar monitoramento contínuo. Iniciar a maioria das investigações com uma busca geral é aconselhável.</p>
+            <p>A maioria dos mecanismos de busca permite o uso de comandos, conhecidos como operadores, dentro do campo de pesquisa. Esses operadores, distintos dos termos de pesquisa, podem ser habilmente combinados para filtrar informações irrelevantes. Uma lista abrangente de operadores geralmente está disponível na documentação do mecanismo de busca, e às vezes, seu uso direto pode ser substituído por interfaces mais amigáveis, como a Pesquisa Avançada do Google.</p>
+            <h3>Vazamentos</h3>
+            <p>Em casos em que organizações sofrem um vazamento, dados sensíveis, incluindo detalhes pessoais, registros financeiros e credenciais de login, muitas vezes tornam-se acessíveis na dark web ou outras plataformas online. A exposição desses dados facilita a compreensão aprofundada da pegada digital do alvo.</p>
+            <h3>Redes Sociais</h3>
+            <p>Redes sociais desempenham um papel fundamental na descoberta e análise de relacionamentos entre indivíduos e grupos. Investigadores empregam a análise de redes para delinear estruturas sociais, identificando influenciadores e figuras-chave. Além disso, plataformas sociais atuam como monitores em tempo real para reações e sentimentos públicos, contribuindo para a conscientização situacional. Elas também funcionam como repositórios de informações georreferenciadas, facilitando o mapeamento de eventos e o rastreamento dos movimentos de indivíduos.</p>
+            <h3>Arquivos e Metadados</h3>
+            <p>Analistas de OSINT podem aproveitar operadores de busca, como "filetype", ou utilizar mecanismos de busca específicos, como o BTDig para torrents, para adquirir documentos relevantes, violações, vídeos, imagens e áudio.</p>
+            <p>Esses arquivos frequentemente contêm metadados valiosos que podem revelar detalhes ocultos sobre a origem, criação e distribuição do documento. O uso de ferramentas como o ExifTool constitui um aspecto crucial para extrair esses metadados, aumentando assim a profundidade das investigações de OSINT.</p>
+            <h3>Hosts</h3>
+            <p>Compreender a interação entre endereços IP, hospedeiros e nomes de domínio é imperativo para descobrir pegadas digitais e rastrear entidades online. Um endereço IP serve como um identificador único para dispositivos conectados à internet, revelando informações sobre sua localização geográfica e detalhes de rede. Hospedeiros, indicando servidores ou máquinas associadas a endereços IP específicos, atuam como pontos finais para comunicação. Nomes de domínio, por outro lado, oferecem uma interface legível por humanos para acessar recursos online, frequentemente vinculados a endereços IP por meio do Sistema de Nomes de Domínio (DNS).</p>
+            <h3>Geolocalização</h3>
+            <p>Extrair dados geoespaciais de fontes publicamente disponíveis, incluindo metadados dentro de arquivos, informações georreferenciadas de redes sociais, análise de endereços IP e análise de imagens. Incorporar a geolocalização em investigações de OSINT facilita o mapeamento de eventos, rastreamento dos movimentos de indivíduos e fornece uma compreensão detalhada do contexto físico que envolve atividades digitais.</p>
+        </div>
+    </main>
+    <footer class="text-center py-3 border-top mt-auto">
+        <a href="https://github.com/0x67757300/OSINT" target="_blank" class="link-body-emphasis"><i class="bi bi-people-fill"></i> Contribuir</a>
+    </footer>
     <script src="assets/js/imask.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
